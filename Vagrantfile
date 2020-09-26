@@ -65,28 +65,36 @@ Vagrant.configure("2") do |config|
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-  	sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
-  	#Atualização
+  	#Desabilitando Selinux
+	sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
+  	sudo setenforce 0
+
+	#Atualização
 	sudo yum update -y
+
 	#Instalação dos pacotes
-	sudo yum install httpd -y
 	sudo yum install mariadb-server -y
-	sudo systemctl enable httpd && sudo systemctl start httpd
 	sudo systemctl enable mariadb && sudo systemctl start mariadb
+	
 	#Instalação do repositorio
 	sudo rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-2.el7.noarch.rpm
-  	#Instalação do Zabbix
+  	
+	#Instalação do Zabbix
 	sudo yum install zabbix-server-mysql zabbix-web-mysql zabbix-agent zabbix-get zabbix-sender zabbix-java-gateway -y
+	
 	#Configurações do Apache (Time Zone)
 	sudo sed 's@# php_value date.timezone Europe/Riga@php_value date.timezone America/Fortaleza@' -i /etc/httpd/conf.d/zabbix.conf
+	
 	#Configuração do banco de dados
 	sudo mysql -e "create database zabbix character set utf8 collate utf8_bin;"
 	sudo mysql -e "create user zabbix@localhost identified by 'zabbix';"
 	sudo mysql -e "grant all privileges on zabbix.* to zabbix@localhost;"
 	sudo zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p"zabbix" zabbix
+	
 	#Configuração do usuário zabbix
 	sudo sed 's/# DBPassword=/DBPassword=zabbix/g' -i /etc/zabbix/zabbix_server.conf
 	sudo sed 's/# DBUser=/DBPassword=zabbix/g' -i /etc/zabbix/zabbix_server.conf
+	
 	#Habilitando a inicialização e reiniciando os serviços
 	sudo systemctl enable zabbix-server zabbix-agent httpd
 	sudo systemctl restart zabbix-server zabbix-agent httpd
