@@ -36,26 +36,27 @@ Para definir IP estático adicione na linha do Vagrantfile o seu IP
 
 3ª Na terceira tela é a configuração do banco
 	
-	**Database Type: MySQL**
+	Database Type: MySQL
 	
-	**Database Host: localhost**
+	Database Host: localhost
 	
-	**Database Port: 3306**
+	Database Port: 3306
 	
-	**Database Name: zabbix**
+	Database Name: zabbix
 	
-	**User: zabbix**
+	User: zabbix
 	
-	**Password: zabbix**
+	Password: zabbix
 	
 Após digitar os dados clique em **Next**
 
 4ª Na quarta tela são detalhes do servidor
 	
-	**Host: localhost**
-	**Port: 10051**
+	Host: localhost
 	
-	**Name: [Sua preferencia]**
+	Port: 10051
+	
+	Name: [Sua preferencia]
 	
 5ª Na última tela são os detalhes da configuração, clique em **Next**.
 
