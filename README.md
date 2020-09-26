@@ -10,11 +10,17 @@ Levantar ambiente zabbix no Centos7
 	1. Faça o clone para sua máquina
 
 	2. Na linha de comando digite
-		```console $vagrant up && vagrant ssh```
+
+```console
+host@host:~$ vagrant up && vagrant ssh
+[vagrant@zabbix-vagrant ~]$ 
+```
 	3. Após finalizar a instalação digite o seguinte comando para pegar o IP do zabbix
-		```console $ip addr```
+```console 
+host@host:~$ ip addr
+```
 	4. Digite no navegador
-		```console ip_do_server/zabbix```
+ip_do_server/zabbix
 
 ### Definindo IP estático
 
