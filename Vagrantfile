@@ -69,7 +69,7 @@ Vagrant.configure("2") do |config|
 	sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
   	sudo setenforce 0
 
-	#Atualização
+	echo "[TASK 01] Atualização"
 	sudo yum update -y
 
 	#Instalação dos pacotes
