@@ -10,9 +10,6 @@ Vagrant.configure("2") do |config|
   	echo "INICIALIZANDO A INSTALAÇÃO DO AMBIENTE DE MONITORAMENTO"
   SHELL
 
-
-  #Instalação Zabbix
   config.vm.provision "shell", path: "zabbix.sh"
-  #Instalação Grafana
   config.vm.provision "shell", path: "grafana.sh"
 end
