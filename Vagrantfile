@@ -7,11 +7,12 @@ Vagrant.configure("2") do |config|
   	vb.name = "zabbix-vagrant"
   end
   config.vm.provision "shell", inline: <<-SHELL
-  	echo "INICIALIZANDO A INSTALAÇÃO DO ZABBIX"
+  	echo "INICIALIZANDO A INSTALAÇÃO DO AMBIENTE DE MONITORAMENTO"
   SHELL
 
 
   #Instalação Zabbix
   config.vm.provision "shell", path: "zabbix.sh"
   #Instalação Grafana
+  config.vm.provision "shell", path: "grafana.sh"
 end
