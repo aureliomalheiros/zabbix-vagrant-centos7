@@ -19,9 +19,9 @@ host@host:~$ vagrant up
 ```
 
 	3. Após finalizar a instalação acesse os dois servidores
-	*Zabbix*
+**Zabbix**
 	172.10.10.10/zabbix
-	*Grafana*
+**Grafana**
 	172.10.10.10:3000
 
 ### Instalação do Zabbix
