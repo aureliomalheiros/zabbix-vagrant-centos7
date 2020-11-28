@@ -1,5 +1,8 @@
 # zabbix-vagrant-centos7
-Levantar ambiente zabbix no Centos7
+## Descrição
+
+Levantar ambiente de monitoramento utilizando Zabbix e Vagrant
+
 ## Requisitos
 
 * Virtual box
@@ -12,21 +15,14 @@ Levantar ambiente zabbix no Centos7
 	2. Na linha de comando digite
 
 ```console
-host@host:~$ vagrant up && vagrant ssh
-[vagrant@zabbix-vagrant ~]$ 
+host@host:~$ vagrant up 
 ```
-	3. Após finalizar a instalação digite o seguinte comando para pegar o IP do zabbix
-```console 
-host@host:~$ ip addr
-```
-	4. Digite no navegador
-ip_do_server/zabbix
 
-### Definindo IP estático
-
-Para definir IP estático adicione na linha do Vagrantfile o seu IP
-
-* config.vm.network "public_network", ip: "seu_ip"
+	3. Após finalizar a instalação acesse os dois servidores
+	*Zabbix*
+	172.10.10.10/zabbix
+	*Grafana*
+	172.10.10.10:3000
 
 ### Instalação do Zabbix
 
@@ -67,3 +63,21 @@ Após digitar os dados clique em **Next**
 **User: Admin**
 
 **Password: zabbix**
+
+### Acesso ao Grafana
+
+#### Login
+**User: admin**
+**Senha: admin**
+
+### 🛠 Tecnologias
+
+![VirtualBox](https://img.shields.io/badge/-VirtualBox-181717?style=for-the-badge&logo=virtualbox)
+![Vagrant](https://img.shields.io/badge/-Vagrant-181717?style=for-the-badge&logo=vagrant)
+
+### **:books: REFERÊNCIAS**
+
+- [Documentação Vagrant](https://www.vagrantup.com/docs)
+- [Documentação Grafana](https://grafana.com/docs/grafana/latest/installation/rpm/)
+- [Documentação Zabbix](https://www.zabbix.com/documentation/4.0/manual/installation/install_from_packages/rhel_centos)
+
